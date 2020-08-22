@@ -9,7 +9,7 @@ const logger = require('koa-logger')
 const index = require('./routes/index')
 const users = require('./routes/users')
 
-// error handler
+// error handler 前端页面显示
 onerror(app)
 
 // middlewares
@@ -25,18 +25,18 @@ app.use(views(__dirname + '/views', {
 }))
 
 // logger
-app.use(async (ctx, next) => {
-  const start = new Date()
-  await next()
-  const ms = new Date() - start
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
-})
+// app.use(async (ctx, next) => {
+//   const start = new Date()
+//   await next()
+//   const ms = new Date() - start
+//   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+// })
 
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 
-// error-handling
+// error-handling 服务器端显示
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
