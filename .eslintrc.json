@@ -6,7 +6,7 @@
         "node": true
     },
     "rules": {
-        "indent": ["error", 3],
+        "indent": ["error", 4],
         "quotes": [
             "error",
             "single",
