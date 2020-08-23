@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>EJS Welcome to <%= title %></p>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1><%= title %></h1>
+  <p>EJS Welcome to <%= title %></p>
+  <h1><%= message %></h1>
+  <!-- <h1><%= locals.name %></h1> -->
+  <!-- locals可以避免变量未声明报错 -->
+  <%- include('widgets/user-info', {isMe}) %>
+  <%- include('widgets/blog-list', {blogList}) %>
   </body>
 </html>
