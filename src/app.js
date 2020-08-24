@@ -11,8 +11,10 @@ const { REDIS_CONF } = require('./conf/db')
 
 // 路由
 const index = require('./routes/index')
-const users = require('./routes/users')
+const userViewRouter = require('./routes/view/user')
+const useApiRouter = require('./routes/api/user')
 const errorViewRouter = require('./routes/view/error')
+
 const {
     isProd
 } = require('./utils/env')
@@ -62,9 +64,10 @@ app.use(session({
 //   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 // })
 
-// routes
+// routes - 路由注册
 app.use(index.routes(), index.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
+app.use(userViewRouter.routes(), userViewRouter.allowedMethods())
+app.use(useApiRouter.routes(), useApiRouter.allowedMethods())
 app.use(errorViewRouter.routes(), errorViewRouter.allowedMethods())
 
 // error-handling 服务器端显示
