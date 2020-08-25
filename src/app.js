@@ -8,6 +8,7 @@ const logger = require('koa-logger')
 const session = require('koa-generic-session')
 const redisStore = require('koa-redis')
 const { REDIS_CONF } = require('./conf/db')
+const { SESSION_SECRET_KEY } = require('./conf/secretKeys')
 
 // 路由
 const index = require('./routes/index')
@@ -40,7 +41,7 @@ app.use(views(__dirname + '/views', {
     extension: 'ejs'
 }))
 
-app.keys = ['Vien_1216#$']
+app.keys = [SESSION_SECRET_KEY]
 
 app.use(session({
     key: 'weibo_sid', // cookie name 默认是 `koa.sid`
